@@ -1,5 +1,8 @@
 #include "GovindUtils.h"
 
+// -1 : First file not found
+// -2 : 
+
 INT WINAPI RemoveDirectoryRecursivelyW(LPCWSTR lpPathName)
 {
 	HANDLE hFind;
@@ -12,7 +15,7 @@ INT WINAPI RemoveDirectoryRecursivelyW(LPCWSTR lpPathName)
 	
 	if (INVALID_HANDLE_VALUE == hFind)
 	{
-		return -1;
+		goto end;
 	}
 	do
 	{
@@ -38,28 +41,14 @@ INT WINAPI RemoveDirectoryRecursivelyW(LPCWSTR lpPathName)
 		{//GetFullPathNameW(wfd.cFileName, MAX_PATH, wszPattern, NULL);
 			PathCchCombine(wszBuffer2, MAX_PATH, lpPathName, wfd.cFileName);
 			if (!DeleteFileW(wszBuffer2))
-			{
-				
-					DWORD dwWritten;
-					HRESULT hr;
-					UINT uLen;
-					WCHAR wszWrite[1000];
-					DWORD dwError = GetLastError();
-
-					StringCchPrintfW(wszWrite, 1000, L"Failed to delete file %s: %I32u\r\n", wszBuffer2, dwError);
-					hr = StringCbLengthW(wszWrite, 1000 * sizeof(WCHAR), &uLen);
-					if (SUCCEEDED(hr))
-					{
-						WriteFile(g_hFile, wszWrite, uLen, &dwWritten, NULL);
-					}
-				
+			{	
 				return -3;
 			}
 		}
 	}
 	while (FindNextFileW(hFind, &wfd));
-
 	FindClose(hFind);
+end:
 	if (FALSE == RemoveDirectoryW(lpPathName))
 	{
 		return -4;

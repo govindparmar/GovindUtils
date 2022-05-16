@@ -3,7 +3,7 @@
 #include <PathCch.h>
 #include <strsafe.h>
 
-#define EXTERN extern
-
 BOOL APIENTRY DllMain(_In_ HINSTANCE hInstDLL, _In_ DWORD dwReason, _In_ LPVOID lpReserved);
-EXTERN HANDLE g_hFile;
+INT WINAPI RemoveDirectoryRecursivelyW(LPCWSTR lpPathName);
+DWORD WINAPI GetFilePointer(_In_ HANDLE hFile, _Out_ LPDWORD lpdwHigh);
+LARGE_INTEGER WINAPI GetFilePointerEx(_In_ HANDLE hFile);

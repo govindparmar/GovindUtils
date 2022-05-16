@@ -26,6 +26,12 @@
     <ClCompile Include="removedirectoryrecursive.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="getfilepointer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="getfilepointerex.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="exports.def">

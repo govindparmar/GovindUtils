@@ -1,3 +1,5 @@
 LIBRARY GovindUtils
 EXPORTS
 	RemoveDirectoryRecursivelyW
+	GetFilePointer
+	GetFilePointerEx

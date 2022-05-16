@@ -140,6 +140,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.c" />
+    <ClCompile Include="getfilepointer.c" />
+    <ClCompile Include="getfilepointerex.c" />
     <ClCompile Include="removedirectoryrecursive.c" />
   </ItemGroup>
   <ItemGroup>
